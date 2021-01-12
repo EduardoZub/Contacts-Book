@@ -1,0 +1,37 @@
+{
+  "contacts": [
+    {
+      "id": 2,
+      "name": "Mrs. Test55522",
+      "phone": "+21192209100",
+      "email": "Karley_Dach@jasper.info",
+      "address": {
+        "street": "Norberto Crossing",
+        "city": "South Christy4434"
+      },
+      "website": "ola.org"
+    },
+    {
+      "id": 3,
+      "name": "Kurtis Weissnat",
+      "phone": "+12284876664",
+      "email": "Elwyn@Skiles.com",
+      "address": {
+        "street": "Rex Trail",
+        "city": "Howemouth"
+      },
+      "website": "elvis.io"
+    },
+    {
+      "id": 4,
+      "name": "Nicholas Runolfsdottir V",
+      "phone": "+43543556554",
+      "email": "Sherwood@rosamond.me",
+      "address": {
+        "street": "Ellsworth Summit",
+        "city": "Aliyaview"
+      },
+      "website": "jacynthe.com"
+    }
+  ]
+}

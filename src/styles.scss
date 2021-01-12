@@ -1,0 +1,59 @@
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+* {
+ 	-webkit-box-sizing: border-box;
+  	box-sizing: border-box;
+}
+
+.wrapper {
+	width: 100%;
+	margin: 0 auto;
+}
+
+a {
+	text-decoration: none;
+	color: #000;
+	transition: all .2s;
+
+	&:hover {
+		color: #3f51b5b5;
+		transition: all .2s;
+	}
+}
+
+.app-content {
+	width: 100%;
+}
+
+h1 {
+    margin: 5px 0;
+}
+
+.mat-table tr.mat-row {
+    height: 60px;
+}
+
+.snack-bar-cust-theme {
+	background-color: #fff;
+	background-color: #3f51b5b5;
+	color: #fff;
+
+	&--error {
+		background-color: #f44335;
+	}
+}
+
+.cdk-overlay-container .bottom-sheet-cust-theme {
+	width: 100%;
+    max-width: 540px;
+	margin: 0 auto;
+	padding: 0;
+}
+
+.cdk-overlay-container .cdk-overlay-pane {
+	width: 100%;
+}
+

@@ -1,0 +1,58 @@
+<table
+    mat-table
+    #contactsTable
+    [dataSource]="dataSource"
+    multiTemplateDataRows class="contacts-table"
+    *ngIf="dataSource.data.length > 0 else noContacts">
+
+    <!-- Table Columns -->
+    <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="phone">
+        <th mat-header-cell *matHeaderCellDef> Phone </th>
+        <td mat-cell *matCellDef="let element" (click)="$event.stopPropagation()">
+            <a href="{{'tel:' + (element.phone | mask: '+00000000000')}}"> {{element.phone | mask: '+0 (000) 000-00-00'}} </a>
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef> E-mail </th>
+        <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+    </ng-container>
+
+    <!-- Table Actions -->
+    <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef style="width: 190px;"> Actions </th>
+        <td mat-cell *matCellDef="let element">
+            <app-table-actions
+                [element]="element"
+                (onEdit)="openBottomModal($event)"
+                (onDelete)="openConfirmDialogOnDelete($event)">
+            </app-table-actions>
+        </td>
+    </ng-container>
+
+    <!-- Expanded Content Column -->
+    <ng-container matColumnDef="expandedDetail">
+        <td mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length">
+            <app-table-detail [element]="element" [expandedElement]="expandedElement"></app-table-detail>
+        </td>
+    </ng-container>
+
+    <!-- Table Rows -->
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let element; columns: displayedColumns;" class="element-row"
+        [class.expanded-row]="expandedElement === element"
+        (click)="expandedElement = expandedElement === element ? null : element">
+    </tr>
+    <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="detail-row"></tr>
+</table>
+
+<ng-template #noContacts>
+    <p class="no-contacts">You have no contacts. Please add your first contact. <mat-icon>notification_important
+        </mat-icon>
+    </p>
+</ng-template>

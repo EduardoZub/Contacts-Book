@@ -1,0 +1,25 @@
+<button
+    class="actions__item detail"
+    mat-mini-fab color="basic"
+    aria-label="detail">
+
+    <mat-icon>keyboard_arrow_down</mat-icon>
+</button>
+
+<button
+    class="actions__item"
+    mat-mini-fab color="primary"
+    aria-label="edit"
+    (click)="$event.stopPropagation(); openBottomModal(element, 'Edit contact')">
+
+    <mat-icon>edit</mat-icon>
+</button>
+
+<button
+    class="actions__item"
+    mat-mini-fab color="warn"
+    aria-label="delete"
+    (click)="$event.stopPropagation(); openConfirmDialogOnDelete(element)">
+
+    <mat-icon>delete</mat-icon>
+</button>

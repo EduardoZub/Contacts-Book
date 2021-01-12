@@ -1,0 +1,38 @@
+.contacts-table {
+  width: 100%;
+}
+
+tr.detail-row {
+  height: 0;
+}
+
+.element-row td {
+  border-bottom-width: 0;
+}
+
+:host ::ng-deep  {
+  .mat-row {
+    .actions__item.detail {
+      .mat-icon {
+        transform: rotate(0deg);
+        transition: all .3s;
+      }
+    }
+  }
+
+  .mat-row {
+    &.expanded-row {
+      .actions__item.detail {
+        .mat-icon {
+          transform: rotate(180deg);
+          transition: all .3s;
+        }
+      }
+    }
+  }
+}
+
+td.mat-cell.mat-column-expandedDetail {
+  padding-right: 0;
+  padding-left: 0;
+}

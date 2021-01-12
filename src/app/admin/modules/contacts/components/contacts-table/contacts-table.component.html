@@ -1,0 +1,11 @@
+
+
+<div class="wrapper contact-tabel-wrap" *ngIf="!preloader else preloaderBlock">
+    <app-top-actions></app-top-actions>
+    <app-table></app-table>
+</div>
+
+<ng-template #preloaderBlock>
+    <app-preloader></app-preloader>
+</ng-template>
+

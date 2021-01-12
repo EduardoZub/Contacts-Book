@@ -1,0 +1,16 @@
+<div class="top-actions-wrap">
+    <app-search
+        style="width: 100%;"
+        [title]="'Filter'"
+        (searchChanged)="onFilterChanged($event)">
+    </app-search>
+
+    <button
+        mat-raised-button
+        color="primary"
+        class="add-contact-btn"
+        (click)="openBottomModal('Add contact')">
+
+        Add contact <mat-icon>person_add</mat-icon>
+    </button>
+</div>

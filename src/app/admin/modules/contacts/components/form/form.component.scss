@@ -1,0 +1,50 @@
+.form-container {
+    width: 100%;
+    background-color: #fff;
+}
+
+.fieldset {
+    width: 100%;
+    border: none;
+    padding: 0;
+}
+
+.form {
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    padding: 25px 20px;
+}
+
+.mat-field-block {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.form-header {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #3f51b5b5;
+    color: #fff;
+    padding: 10px 20px;
+}
+
+.form-actions {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.form-action {
+    cursor: pointer;
+    margin-right: 15px;
+
+    &:last-child {
+        margin-right: 0;
+    }
+}

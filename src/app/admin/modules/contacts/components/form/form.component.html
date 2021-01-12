@@ -1,0 +1,72 @@
+<div class="form-container">
+    <div class="form-header">
+        <h3>{{ data.title }}</h3>
+        <div class="form-actions">
+            <mat-icon class="form-action" (click)="save()">save</mat-icon>
+            <mat-icon class="form-action" (click)="close()">close</mat-icon>
+        </div>
+    </div>
+
+    <form class="form" [formGroup]="contactForm">
+        <fieldset class="fieldset">
+            <mat-error *ngIf="validationStatus">
+                Please fill all required fields
+            </mat-error>
+            <br>
+
+            <mat-form-field appearance="fill" class="mat-field-block">
+                <mat-label>Name</mat-label>
+                <input matInput required formControlName="name">
+                <mat-error *ngIf="contactForm.get('name').invalid">{{getErrorMessage()}}</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="mat-field-block">
+                <mat-label>Phone</mat-label>
+                <input
+                    type="tel"
+                    matInput
+                    required
+                    [specialCharacters]="['+', ' ', '-', '(', ')']"
+                    prefix="+"
+                    mask="0 (000) 000-00-00"
+                    formControlName="phone">
+
+                <mat-error *ngIf="contactForm.get('phone').invalid">{{getErrorMessage()}}</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="mat-field-block">
+                <mat-label>E-mail</mat-label>
+                <input
+                    matInput
+                    [specialCharacters]="['@', '.', '-', '_']"
+                    [dropSpecialCharacters]="false"
+                    mask="A*@A*.SSS"
+                    formControlName="email">
+
+                    <mat-error *ngIf="contactForm.get('email').invalid">{{getErrorMessage()}}</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="mat-field-block">
+                <mat-label>Website</mat-label>
+                <input
+                    matInput
+                    [dropSpecialCharacters]="false"
+                    mask="A*.SSS"
+                    formControlName="website">
+            </mat-form-field>
+        </fieldset>
+
+        <fieldset class="fieldset" formGroupName="address">
+            <mat-form-field appearance="fill" class="mat-field-block">
+                <mat-label>City</mat-label>
+                <input matInput formControlName="city">
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="mat-field-block">
+                <mat-label>Street</mat-label>
+                <input matInput formControlName="street">
+            </mat-form-field>
+        </fieldset>
+    </form>
+
+</div>

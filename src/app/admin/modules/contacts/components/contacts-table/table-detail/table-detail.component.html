@@ -1,0 +1,41 @@
+<div class="element-detail" [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+    <h3 class="element-detail__title">
+        Additional information:
+    </h3>
+
+    <hr>
+
+    <div class="element-additional-info"
+        *ngIf="element.website || element.address.city || element.address.street else noInfo">
+        <div class="box">
+            <h4 class="box-title">Social links</h4>
+            <div class="box-content">
+                <div class="element-additional-info__item" *ngIf="element.website">
+                    <div class="element-additional-info__title"> Website: </div>
+                    <div class="element-additional-info__text">
+                        <a href="{{element.website}}" target="_blank"> {{element.website}} <i class="link-icon"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="box">
+            <h4 class="box-title">Address</h4>
+            <div class="box-content">
+                <div class="element-additional-info__item" *ngIf="element.address && element.address.city">
+                    <div class="element-additional-info__title"> City: </div>
+                    <div class="element-additional-info__text"> {{element.address.city}} </div>
+                </div>
+
+                <div class="element-additional-info__item" *ngIf="element.address && element.address.street">
+                    <div class="element-additional-info__title"> Street: </div>
+                    <div class="element-additional-info__text"> {{element.address.street}} </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <ng-template #noInfo>
+        <p>No aditional information</p>
+    </ng-template>
+</div>

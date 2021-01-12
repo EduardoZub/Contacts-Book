@@ -1,0 +1,21 @@
+<div class="header-top">
+    <div class="wrapper">
+        <div class="header-top-content">
+            <h1>{{ headerTitle }}</h1>
+
+            <button
+                mat-mini-fab
+                color="accent"
+                aria-label="Logout"
+                (click)="logout()">
+                <mat-icon>logout</mat-icon>
+            </button>
+        </div>
+    </div>
+</div>
+
+<div class="header">
+    <div class="wrapper">
+        <h2>{{ user.username }}</h2>
+    </div>
+</div>

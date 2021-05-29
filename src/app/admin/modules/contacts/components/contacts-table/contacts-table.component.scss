@@ -1,11 +1,13 @@
-.wrapper {
-  max-width: 1000px;
-  margin: 0 auto;
-}
+:host {
+  .wrapper {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
 
-.no-contacts {
-  color: #3f51b5;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+  .no-contacts {
+    color: #3f51b5;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
 }

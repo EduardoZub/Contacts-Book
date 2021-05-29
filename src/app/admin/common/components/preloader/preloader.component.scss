@@ -1,25 +1,27 @@
-.preloader-block {
-	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-	width: 100%;
-	height: 100vh;
-	padding-top: 150px;
-	background-color: #fdfdfe;
-	z-index: 3;
-}
+:host {
+	.preloader-block {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		display: flex;
+			flex-direction: row;
+			align-items: center;
+			justify-content: center;
+		width: 100%;
+		height: 100vh;
+		padding-top: 150px;
+		background-color: #fdfdfe;
+		z-index: 3;
+	}
 
-.img-wrap {
-	width: 100%;
-	max-width: 200px;
-}
+	.img-wrap {
+		width: 100%;
+		max-width: 200px;
+	}
 
-.img-wrap img {
-	width: 100%;
+	.img-wrap img {
+		width: 100%;
+	}
 }

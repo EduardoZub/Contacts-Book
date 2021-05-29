@@ -26,14 +26,15 @@ export class ContactsTableService {
     public fetchTableData() {
         this._contactsService.getContacts()
             .pipe(finalize(() => this.preloader$.next(false)))
-            .subscribe((data) => {
-                this.contactsData$.next(data);
-            });
+            .subscribe(
+                (data) => this.contactsData$.next(data),
+                (error) => this.openSnackBar(error.message, true)
+            );
     }
 
     public openSnackBar(message: string = 'message', isError: boolean = false): void {
         this._snackBar.open(message, 'Ok', {
-            duration: 3000,
+            duration: 5000,
             panelClass: isError ? 'snack-bar-cust-theme--error' : 'snack-bar-cust-theme',
             horizontalPosition: this.horizontalPosition,
             verticalPosition: this.verticalPosition,

@@ -20,7 +20,10 @@
     <div class="login-card-block login-card-block-right">
         <div class="bgr-img"></div>
         <div class="login-card-block-content login-card-block-content--padding" [formGroup]="loginForm">
-            <mat-error class="error-message" *ngIf="errorMessage">{{ errorMessage }}</mat-error>
+            <mat-error class="error-message" *ngIf="errorMessage">
+                <div>{{ errorMessage?.name }}</div>
+                <div>{{ errorMessage?.message }}</div>
+            </mat-error>
 
             <form class="form" [formGroup]="loginForm">
                 <mat-form-field appearance="fill" class="form-field">

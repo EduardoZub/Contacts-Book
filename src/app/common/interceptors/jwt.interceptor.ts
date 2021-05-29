@@ -13,7 +13,11 @@ export class JwtInterceptor implements HttpInterceptor {
         let request = req;
 
         if (token) {
-            request = req.clone({ headers: req.headers.set(TOKEN_HEADER_KEY, token) });
+            request = req.clone({
+                headers: req.headers
+                    .set('Content-Type', 'application/json')
+                    .set(TOKEN_HEADER_KEY, token)
+            });
         }
 
         return next.handle(request);

@@ -3,14 +3,14 @@ import { Routes, RouterModule } from '@angular/router';
 import { ContactsTableComponent } from './components/contacts-table/contacts-table.component';
 
 const routes: Routes = [
-    {
-        path: '',
-        component: ContactsTableComponent
-    }
+  {
+    path: '',
+    component: ContactsTableComponent
+  }
 ];
 
 @NgModule({
-    imports: [RouterModule.forChild(routes)],
-    exports: [RouterModule]
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule]
 })
 export class ContactsRoutingModule { }

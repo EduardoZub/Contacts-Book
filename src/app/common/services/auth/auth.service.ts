@@ -17,6 +17,11 @@ interface ServerResponseI {
   user: UserI;
 }
 
+export interface ErrorI {
+  message: string;
+  name: string;
+}
+
 const httpHeaders = {
   headers: new HttpHeaders({
     'Header-Name': 'Mocked Authorization',
@@ -29,7 +34,7 @@ const httpHeaders = {
 })
 export class AuthService {
 
-  public errorMessage$: BehaviorSubject<string> = new BehaviorSubject('');
+  public errorMessage$: BehaviorSubject<ErrorI> = new BehaviorSubject(null);
 
   constructor(
     private _http: HttpClient,
@@ -41,8 +46,12 @@ export class AuthService {
       .subscribe((resp: ServerResponseI) => {
         localStorage.setItem(TOCKEN, JSON.stringify(resp));
         this._router.navigate(['admin']);
-      }, error => {
-        if (error.error) {  this.errorMessage$.next(error.error); }
+
+      }, (error: ErrorI) => {
+        this.errorMessage$.next({
+          message: error?.message || 'Something bad happened!',
+          name: error?.name || ''
+        });
       });
   }
 

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from 'src/app/common/services/auth/auth.service';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { AuthService, ErrorI } from 'src/app/common/services/auth/auth.service';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 
@@ -14,7 +14,7 @@ export class LoginCardComponent implements OnInit {
   private readonly unsubscribe$: Subject<void> = new Subject();
 
   public isDisabled: boolean = true;
-  public errorMessage: string = '';
+  public errorMessage: ErrorI = null;
 
   public loginForm = this._formBuilder.group({
     userName: new FormControl('', [Validators.required]),
@@ -29,32 +29,33 @@ export class LoginCardComponent implements OnInit {
   ngOnInit(): void {
     this._authService.errorMessage$
       .pipe(takeUntil(this.unsubscribe$))
-      .subscribe(error => {
-        this.errorMessage = error;
+      .subscribe((errorMessage: ErrorI) => {
+        this.errorMessage = errorMessage;
       });
   }
 
   public getErrorMessage(): string {
+    const message = 'You must enter a value';
     if (this.loginForm.get('userName').hasError('required')) {
-      return 'You must enter a value';
+      return message;
     }
 
     if (this.loginForm.get('password').hasError('required')) {
-      return 'You must enter a value';
+      return message;
     }
   }
 
   public onLogin(): void {
     const loginData = {
-      username: this.loginForm.get('userName').value,
-      password: this.loginForm.get('password').value
+      username: this.loginForm.get('userName').value.trim(),
+      password: this.loginForm.get('password').value.trim()
     }
 
     this._authService.login(loginData);
   }
 
   ngOnDestroy(): void {
-    this._authService.errorMessage$.next('');
+    this._authService.errorMessage$.next(null);
     this.unsubscribe$.next();
     this.unsubscribe$.unsubscribe();
   }

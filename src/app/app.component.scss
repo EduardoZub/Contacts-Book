@@ -1,5 +1,7 @@
-.app-content {
-	position: relative;
-	width: 100%;
-	margin: 0 auto;
+:host {
+	.app-content {
+		position: relative;
+		width: 100%;
+		margin: 0 auto;
+	}
 }

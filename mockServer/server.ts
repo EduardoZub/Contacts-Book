@@ -49,6 +49,16 @@ server.post('/login', (req, res, next) => {
     }
 });
 
+
+server.get('/contacts', (req, res, next) => {
+    const accessToken = req.get(TOKEN_HEADER_KEY);
+    if (decode(accessToken)) {
+        next();
+    } else {
+        res.status(401).send('Unauthorized');
+    }
+});
+
 server.post('/contacts', (req, res, next) => {
     const accessToken = req.get(TOKEN_HEADER_KEY);
     req.body.id = uuidv4();

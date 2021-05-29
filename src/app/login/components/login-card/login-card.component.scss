@@ -1,155 +1,152 @@
-
-.login-card {
-    position: relative;
-    width: 100%;
-    max-width: 1130px;
-    height: 500px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    background-color: #fff;
-    margin: 0 auto;
-    z-index: 5;
-}
-
-.login-card-block {
-    width: 100%;
-    height: 100%;
-
-    &.login-card-block-left {
+:host {
+    .login-card {
         position: relative;
-        background-image: url('/assets/images/pexels-naya-shaw-2002585.jpg');
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center;
-        color: #fff;
-        flex-basis: 77%;
-        box-shadow: -5px 0px 14px -7px #222223;
+        width: 100%;
+        max-width: 1130px;
+        height: 500px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        background-color: #fff;
+        margin: 0 auto;
+        z-index: 5;
     }
 
-    &.login-card-block-right {
-        position: relative;
+    .login-card-block {
+        width: 100%;
+        height: 100%;
+
+        &.login-card-block-left {
+            position: relative;
+            background-image: url('/assets/images/pexels-naya-shaw-2002585.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            color: #fff;
+            flex-basis: 77%;
+            box-shadow: -5px 0px 14px -7px #222223;
+        }
+
+        &.login-card-block-right {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex-basis: 100%;
+            box-shadow: 5px 0px 14px -7px #222223;
+            background-color: #f8fcfc;
+            overflow: hidden;
+
+            &:before  {
+                content: '';
+                display: block;
+                position: absolute;
+                left: 42px;
+                width: 100%;
+                height: 100%;
+                z-index: 1;
+                background-image: url(/assets/images/pexels-nika-akin-3515156.jpg);
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: left bottom;
+                transform: rotate(180deg);
+            }
+
+            .login-card-block-content {
+                max-width: 470px;
+            }
+        }
+    }
+
+
+    .form-field {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+
+    .form {
+        width: 100%;
         display: flex;
         flex-direction: column;
         align-items: center;
-        flex-basis: 100%;
-        box-shadow: 5px 0px 14px -7px #222223;
-        background-color: #f8fcfc;
-        overflow: hidden;
+        justify-content: center;
+    }
 
-        &:before  {
-            content: '';
-            display: block;
-            position: absolute;
-            left: 42px;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-            background-image: url(/assets/images/pexels-nika-akin-3515156.jpg);
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: left bottom;
-            transform: rotate(180deg);
+    .mask {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #3f51b5;
+        opacity: 0.1;
+        z-index: 4;
+    }
+
+    .login-card-block-content {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        z-index: 5;
+
+        &--padding {
+            padding: 0 25px;
         }
+    }
 
-        .login-card-block-content {
-            max-width: 470px;
+    .logo {
+        width: 100px;
+        height: 100px;
+        background-image: url('/assets/images/icons8-angularjs-100.png');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    ::ng-deep  {
+        .mat-form-field-appearance-fill .mat-form-field-flex {
+            background-color: transparent;
         }
     }
-}
 
-
-.form-field {
-    width: 100%;
-    margin-bottom: 15px;
-}
-
-.form {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.mask {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #3f51b5;
-    opacity: 0.1;
-    z-index: 4;
-}
-
-.login-card-block-content {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    z-index: 5;
-
-    &--padding {
-        padding: 0 25px;
+    .error-message {
+        width: 100%;
+        padding-bottom: 20px;
     }
-}
 
-.logo {
-    width: 100px;
-    height: 100px;
-    background-image: url('/assets/images/icons8-angularjs-100.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-}
-
-:host ::ng-deep  {
-    .mat-form-field-appearance-fill .mat-form-field-flex {
-        background-color: transparent;
-    }
-}
-
-h2 {
-    color: #673ab7;
-}
-
-.login-button {
-    width: 160px;
-    color: #fff;
-    background-color: #9cafb8;
-
-    &:disabled {
+    .login-button {
+        width: 160px;
         color: #fff;
-        cursor: not-allowed;
         background-color: #9cafb8;
 
-        &:hover {
+        &:disabled {
+            color: #fff;
+            cursor: not-allowed;
             background-color: #9cafb8;
+
+            &:hover {
+                background-color: #9cafb8;
+            }
+        }
+
+        &:hover {
+            background-color: #4a9071;
         }
     }
 
-    &:hover {
-        background-color: #4a9071;
+    .to-login {
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        padding-left: 30px;
+        font-size: 14px;
+        font-family: monospace;
     }
-}
-
-.to-login {
-    width: 100%;
-    position: absolute;
-    bottom: 0;
-    padding-left: 30px;
-    font-size: 14px;
-    font-family: monospace;
-}
-
-.error-message {
-    width: 100%;
-    padding-bottom: 20px;
 }

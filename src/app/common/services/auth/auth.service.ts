@@ -1,10 +1,10 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
+import { API } from 'src/app/app.module';
 import { UserI } from '../../models/user';
 
-export const AUTH_API = 'http://localhost:3000/';
 export const TOCKEN = 'auth_token_edApp';
 
 interface AuthI {
@@ -38,11 +38,12 @@ export class AuthService {
 
   constructor(
     private _http: HttpClient,
-    private _router: Router
+    private _router: Router,
+    @Inject(API) public API_URL: string,
   ) { }
 
   public login(data: AuthI): void {
-    this._http.post(`${AUTH_API}login`, { username: data.username, password: data.password }, httpHeaders)
+    this._http.post(`${this.API_URL}login`, { username: data.username, password: data.password }, httpHeaders)
       .subscribe((resp: ServerResponseI) => {
         localStorage.setItem(TOCKEN, JSON.stringify(resp));
         this._router.navigate(['admin']);
